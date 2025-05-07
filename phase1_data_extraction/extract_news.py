@@ -43,7 +43,7 @@ def process_articles(raw_articles):
             "publishedAt": a.get("publishedAt", ""),
             "source": a.get("source", {}).get("name", ""),
             "url": url,
-            "fetchedAt": datetime.utcnow().isoformat(),
+            "fetchedAt": datetime.now(timezone.utc).isoformat(),
             "sentiment": None  # Placeholder for future sentiment analysis
         })
     return cleaned
