@@ -82,3 +82,5 @@ def collect_financial_news(query: str, collection_name: str):
 
 if __name__ == "__main__":
     collect_financial_news("finance OR economy OR stock market OR S&P 500", "financial_news")
+
+#Extract_news

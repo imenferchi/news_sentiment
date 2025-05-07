@@ -32,3 +32,5 @@ def insert_articles(collection_name, articles):
             return 0
 
     return len(new_articles)
+
+#Database.py

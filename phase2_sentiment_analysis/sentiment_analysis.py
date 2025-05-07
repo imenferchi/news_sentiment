@@ -12,7 +12,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'p
 import database  
 
 # --- Logging setup ---
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.INFO) 
 logger = logging.getLogger(__name__)
 
 # --- Load FinBERT model and tokenizer ---
@@ -59,3 +59,5 @@ def analyze_and_update_articles(collection_name):
 # --- Entry point ---
 if __name__ == "__main__":
     analyze_and_update_articles("financial_news")
+
+#Sentiment 
