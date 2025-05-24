@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Sentiment Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📈 Financial Sentiment Dashboard</h1>
+            <p>Real-time sentiment analysis and S&P 500 correlation tracking</p>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label>Date Range</label>
+                <select id="dateRange">
+                    <option value="7">Last 7 days</option>
+                    <option value="30" selected>Last 30 days</option>
+                    <option value="90">Last 90 days</option>
+                    <option value="365">Last year</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label>Data Source</label>
+                <select id="dataSource">
+                    <option value="all">All Sources</option>
+                    <option value="bloomberg">Bloomberg</option>
+                    <option value="cnbc">CNBC</option>
+                    <option value="reuters">Reuters</option>
+                    <option value="wsj">Wall Street Journal</option>
+                </select>
+            </div>
+            <button class="btn" onclick="refreshData()">🔄 Refresh Data</button>
+            <div style="margin-left: auto;">
+                <span class="status-indicator status-connected"></span>
+                <span>Connected to MongoDB</span>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Key Metrics -->
+            <div class="card metric-card">
+                <h3>Current Sentiment Score</h3>
+                <div class="metric-value" id="currentSentiment">+0.23</div>
+                <div class="metric-label">Daily Average</div>
+            </div>
+
+            <div class="card metric-card fear-index">
+                <h3>Fear Index</h3>
+                <div class="metric-value" id="fearIndex">34</div>
+                <div class="metric-label">Moderate Fear</div>
+            </div>
+
+            <div class="card metric-card correlation">
+                <h3>S&P 500 Correlation</h3>
+                <div class="metric-value" id="correlationValue">68%</div>
+                <div class="metric-label">Sentiment Match Rate</div>
+            </div>
+
+            <!-- Sentiment Distribution -->
+            <div class="card">
+                <h3>📊 Sentiment Distribution</h3>
+                <div class="sentiment-indicator">
+                    <div class="sentiment-item sentiment-positive">
+                        <div style="font-size: 1.5rem; font-weight: bold;" id="positiveCount">142</div>
+                        <div>Positive</div>
+                    </div>
+                    <div class="sentiment-item sentiment-neutral">
+                        <div style="font-size: 1.5rem; font-weight: bold;" id="neutralCount">89</div>
+                        <div>Neutral</div>
+                    </div>
+                    <div class="sentiment-item sentiment-negative">
+                        <div style="font-size: 1.5rem; font-weight: bold;" id="negativeCount">76</div>
+                        <div>Negative</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sentiment Timeline -->
+            <div class="card" style="grid-column: span 2;">
+                <h3>📈 Sentiment Timeline</h3>
+                <div class="chart-container">
+                    <canvas id="sentimentChart"></canvas>
+                </div>
+            </div>
+
+            <!-- S&P 500 vs Sentiment -->
+            <div class="card" style="grid-column: span 2;">
+                <h3>📊 S&P 500 vs Sentiment Correlation</h3>
+                <div class="chart-container">
+                    <canvas id="correlationChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Recent News Feed -->
+            <div class="card">
+                <h3>📰 Recent News Analysis</h3>
+                <div class="news-feed" id="newsFeed">
+                    <!-- News items will be populated here -->
+                </div>
+            </div>
+
+            <!-- Performance Metrics -->
+            <div class="card">
+                <h3>⚡ Performance Metrics</h3>
+                <div style="margin-top: 15px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span>Articles Analyzed Today:</span>
+                        <strong id="articlesAnalyzed">234</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span>Processing Speed:</span>
+                        <strong id="processingSpeed">1.2s avg</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span>Data Sources Active:</span>
+                        <strong id="activeSources">7/9</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Last Update:</span>
+                        <strong id="lastUpdate">2 min ago</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/config.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
